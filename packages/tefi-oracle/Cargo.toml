@@ -7,19 +7,11 @@ description = "Common TeFi oracle types"
 license = "Apache-2.0"
 repository = "https://github.com/terra-money/tefi-oracle-contracts"
 
-[profile.release]
-rpath = false
-lto = true
-overflow-checks = true
-opt-level = 3
-debug = false
-debug-assertions = false
-
 [features]
 internal = []
 
 [dependencies]
-cosmwasm-std = { version = "0.16.2" }
+cosmwasm-std = { version = "1.0.0" }
 schemars = "0.8.1"
 serde = { version = "1.0.103", default-features = false, features = ["derive"] }
 thiserror = { version = "1.0.23" }

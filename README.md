@@ -1,15 +1,12 @@
 # TeFi Oracle
 
-This repository contains the source code for a set of oracle smart contracts running on [Terra](https://terra.money) blockchain.
+This repository contains the source code for a set of updated to CosmWasm 1.0 oracle smart contracts running on [Terra](https://terra.money) blockchain.
 
 ## Contracts
 
 | Contract                                                | Reference | Description                                                                                           |
 | ------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
 | [`hub`](./contracts/oracle-hub)                         | [doc]()   | Central price source for all assets, redirects requests to proxies based on priority and availability |
-| [`proxy-template`](./contracts/oracle-proxy-template)   | [doc]()   | Template of a contract that implements the proxy standard                                             |
-| [`proxy-band`](./contracts/oracle-proxy-band)           | [doc]()   | Proxy contract for Band Protocol price sources                                                        |
-| [`proxy-chainlink`](./contracts/oracle-proxy-chainlink) | [doc]()   | Proxy contract for Chainlink price sources                                                            |
 | [`proxy-feed`](./contracts/oracle-proxy-feed)           | [doc]()   | Custom proxy contract that allows external sources to feed prices                                     |
 
 ## Development
@@ -60,12 +57,6 @@ docker run --rm -v "$(pwd)":/code \
   --mount type=volume,source="$(basename "$(pwd)")_cache",target=/code/target \
   --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
   cosmwasm/rust-optimizer:0.11.5
-```
-
-or
-
-```sh
-sh build_release.sh
 ```
 
 This performs several optimizations which can significantly reduce the final size of the contract binaries, which will be available inside the `artifacts/` directory.

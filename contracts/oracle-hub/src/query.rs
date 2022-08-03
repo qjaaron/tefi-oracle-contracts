@@ -167,7 +167,7 @@ pub fn query_asset_symbol_map(
     let limit = limit
         .unwrap_or(DEFAULT_PAGINATION_LIMIT)
         .min(MAX_PAGINATION_LIMIT) as usize;
-    let start = start_after.map(|addr| Bound::exclusive(addr.as_bytes()));
+    let start = start_after.as_ref().map(|addr| Bound::exclusive(addr.as_bytes()));
 
     let map: Vec<(String, String)> = ASSET_SYMBOL_MAP
         .range(deps.storage, start, None, Order::Ascending)
@@ -191,7 +191,7 @@ pub fn query_all_sources(
     let limit = limit
         .unwrap_or(DEFAULT_PAGINATION_LIMIT)
         .min(MAX_PAGINATION_LIMIT) as usize;
-    let start = start_after.map(|symbol| Bound::exclusive(symbol.as_bytes()));
+    let start = start_after.as_ref().map(|symbol| Bound::exclusive(symbol.as_bytes()));
 
     let whitelist: ProxyWhitelist = WHITELIST.load(deps.storage)?;
     let list: Vec<SourcesResponse> = SOURCES
